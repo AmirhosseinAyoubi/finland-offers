@@ -1,4 +1,3 @@
-#!/usr/bin/env python3
 import os
 import re
 import sys
@@ -293,17 +292,21 @@ async def fetch_with_pagination(url: str, max_pages: int = 3) -> str:
 
 async def fetch_dynamic(url: str, wait_ms: int = 1500) -> str:
     global playwright
-    if playwright is None:
-        from playwright.async_api import async_playwright
-        playwright = async_playwright
-    async with playwright() as p:
-        browser = await p.chromium.launch(headless=True)
-        page = await browser.new_page()
-        await page.goto(url, timeout=60000, wait_until="domcontentloaded")
-        await page.wait_for_timeout(wait_ms)
-        html = await page.content()
-        await browser.close()
-        return html
+    try:
+        if playwright is None:
+            from playwright.async_api import async_playwright
+            playwright = async_playwright
+        async with playwright() as p:
+            browser = await p.chromium.launch(headless=True)
+            page = await browser.new_page()
+            await page.goto(url, timeout=60000, wait_until="domcontentloaded")
+            await page.wait_for_timeout(wait_ms)
+            html = await page.content()
+            await browser.close()
+            return html
+    except Exception as e:
+        log.warning(f"Playwright failed for {url}: {e}. Falling back to static scraping.")
+        return await fetch_static(url)
 
 
 class StoreConfig(BaseModel):
