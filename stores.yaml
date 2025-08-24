@@ -1,0 +1,75 @@
+stores:
+  - name: "Prisma"
+    url: "https://www.prisma.fi/kampanjat/ale"
+    dynamic: false
+    item_selector: "li[data-test-id^='products-list-item']"   # product card
+    link_selector: "a[data-test-id='product-card-link']"      # product link
+    price_current_selector: "div[data-test-id='product-card-price'] p"  # discounted price
+    price_original_selector: "div[data-test-id='product-card-price'] span.line-through"  # original price
+
+  - name: "Prisma Fashion"
+    url: "https://www.prisma.fi/kampanjat/ale/kategoria/5/muoti"
+    dynamic: false
+    item_selector: "li[data-test-id^='products-list-item']"   # product card
+    link_selector: "a[data-test-id='product-card-link']"      # product link
+    price_current_selector: "div[data-test-id='product-card-price'] p"  # discounted price
+    price_original_selector: "div[data-test-id='product-card-price'] span.line-through"  # original price
+
+  - name: "Prisma Home"
+    url: "https://www.prisma.fi/kampanjat/ale/kategoria/4/koti"
+    dynamic: false
+    item_selector: "li[data-test-id^='products-list-item']"   # product card
+    link_selector: "a[data-test-id='product-card-link']"      # product link
+    price_current_selector: "div[data-test-id='product-card-price'] p"  # discounted price
+    price_original_selector: "div[data-test-id='product-card-price'] span.line-through"  # original price
+
+  - name: "Prisma Toys"
+    url: "https://www.prisma.fi/kampanjat/ale/kategoria/8/lelut-ja-lastentarvikkeet"
+    dynamic: false
+    item_selector: "li[data-test-id^='products-list-item']"   # product card
+    link_selector: "a[data-test-id='product-card-link']"      # product link
+    price_current_selector: "div[data-test-id='product-card-price'] p"  # discounted price
+    price_original_selector: "div[data-test-id='product-card-price'] span.line-through"  # original price
+
+  - name: "Tokmanni"
+    url: "https://www.tokmanni.fi/viikkotarjoukset"
+    dynamic: false
+    item_selector: "li.item.product.product-item"             # product card
+    link_selector: "a.product-item-link"                      # product link
+    price_current_selector: "span.price"                      # discounted/final price
+    price_original_selector: "span.old-price, span.price-standard"  # original price (Tokmanni may show crossed-out)
+
+  - name: "Tokmanni Auto"
+    url: "https://www.tokmanni.fi/viikkotarjoukset/autoilu"
+    dynamic: false
+    item_selector: "li.item.product.product-item"             # product card
+    link_selector: "a.product-item-link"                      # product link
+    price_current_selector: "span.price"                      # discounted/final price
+    price_original_selector: "span.old-price, span.price-standard"  # original price
+
+  - name: "Tokmanni Food"
+    url: "https://www.tokmanni.fi/viikkotarjoukset/elintarvikkeet"
+    dynamic: false
+    item_selector: "li.item.product.product-item"             # product card
+    link_selector: "a.product-item-link"                      # product link
+    price_current_selector: "span.price"                      # discounted/final price
+    price_original_selector: "span.old-price, span.price-standard"  # original price
+
+  - name: "Tokmanni Shoes"
+    url: "https://www.tokmanni.fi/viikkotarjoukset/click-shoes"
+    dynamic: false
+    item_selector: "li.item.product.product-item"             # product card
+    link_selector: "a.product-item-link"                      # product link
+    price_current_selector: "span.price"                      # discounted/final price
+    price_original_selector: "span.old-price, span.price-standard"  # original price
+
+  - name: "Verkkokauppa"
+    url: "https://www.verkkokauppa.com/fi/etusivu"
+    dynamic: true
+    item_selector: "li.sc-gFqAkR.fLRieI"                      # product card
+    link_selector: "a.sc-ux2utt-1.iSrJci"                     # product link
+    title_selector: "span.sc-hIUJlX.gzXXYm"                   # product title
+    price_current_selector: "data[data-price='current']"      # current price
+    price_original_selector: "data[data-price='previous']"    # original price (crossed out)
+
+
