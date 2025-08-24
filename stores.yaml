@@ -65,7 +65,7 @@ stores:
 
   - name: "Verkkokauppa"
     url: "https://www.verkkokauppa.com/fi/etusivu"
-    dynamic: true
+    dynamic: false
     item_selector: "li.sc-gFqAkR.fLRieI"                      # product card
     link_selector: "a.sc-ux2utt-1.iSrJci"                     # product link
     title_selector: "span.sc-hIUJlX.gzXXYm"                   # product title

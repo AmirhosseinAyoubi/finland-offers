@@ -26,7 +26,6 @@ except ImportError:
     TRANSLATION_AVAILABLE = False
     print("Warning: Translation not available. Install deep-translator for translation support.")
 
-playwright = None
 
 logging.basicConfig(
     level=logging.INFO,
@@ -291,12 +290,10 @@ async def fetch_with_pagination(url: str, max_pages: int = 3) -> str:
     return "\n".join(all_content)
 
 async def fetch_dynamic(url: str, wait_ms: int = 1500) -> str:
-    global playwright
+    """Fetch dynamic content using Playwright (if available) or fallback to static"""
     try:
-        if playwright is None:
-            from playwright.async_api import async_playwright
-            playwright = async_playwright
-        async with playwright() as p:
+        from playwright.async_api import async_playwright
+        async with async_playwright() as p:
             browser = await p.chromium.launch(headless=True)
             page = await browser.new_page()
             await page.goto(url, timeout=60000, wait_until="domcontentloaded")
@@ -304,6 +301,9 @@ async def fetch_dynamic(url: str, wait_ms: int = 1500) -> str:
             html = await page.content()
             await browser.close()
             return html
+    except ImportError:
+        log.warning("Playwright not available. Using static scraping for dynamic site.")
+        return await fetch_static(url)
     except Exception as e:
         log.warning(f"Playwright failed for {url}: {e}. Falling back to static scraping.")
         return await fetch_static(url)
