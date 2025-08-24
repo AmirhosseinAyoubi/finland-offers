@@ -6,4 +6,5 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 COPY . .
 
+# Start the Finnish Deals Bot
 CMD ["python", "railway_start.py"]
