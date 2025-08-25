@@ -1,0 +1,18 @@
+services:
+  - type: worker
+    name: finnish-deals-bot
+    env: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: python railway_start.py
+    envVars:
+      - key: TELEGRAM_BOT_TOKEN
+        sync: false
+      - key: TELEGRAM_CHAT_ID
+        sync: false
+      - key: ENABLE_TRANSLATION
+        value: true
+      - key: DEFAULT_CURRENCY
+        value: EUR
+      - key: MIN_HOURS_BETWEEN_REPOSTS
+        value: 72
+
